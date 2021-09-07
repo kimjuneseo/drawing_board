@@ -21,9 +21,9 @@ const commonListener = (event) => {
         case "mousedown":
             pos.drawable = true;
             // 지우개인지 체크
-            if(!pos.clearble){
+            if (!pos.clearble) {
                 clear(event);
-            }else{
+            } else {
                 // 그릴준비
                 ctx.beginPath();
                 ctx.moveTo(event.x, event.y);
@@ -31,39 +31,39 @@ const commonListener = (event) => {
             break;
         case "mousemove":
             if (pos.drawable) {
-                // clearble이 false면 clear실행 아니면 draw실행
-                !pos.clearble ? clear(event) : draw(event); 
-             }
+                !pos.clearble ? clear(event) : draw(event);
+            }
             break;
         case "mouseup":
-                pos.drawable = false;
-             break;
-            }};
-        
+            pos.drawable = false;
+            break;
+    }
+};
+
 // draw
 const draw = (event) => {
     ctx.lineTo(event.layerX, event.layerY);
     ctx.stroke();
     ctx.lineWidth = thicknes.value
     ctx.strokeStyle = color.value;
-    };
-        
+};
+
 // clear
 const clear = (event) => {
-    const radius = 10; 
+    const radius = 10;
     ctx.clearRect(event.layerX - radius - 1, event.layerY - radius, radius * 2 + 2, radius * 2 + 2);
 }
 
 const previewFn = () => {
     previewImgModal.classList.add('none')
 };
-        
+
 const toolListener = (boolean) => {
     boolean ? pos.clearble = true : pos.clearble = false;
 };
 
 const ShapeDraw = (e) => {
-     
+
 }
 // input evt
 thicknes.addEventListener('click', commonListener);
@@ -91,5 +91,3 @@ canva.addEventListener('contextmenu', (event) => {
     const base64 = event.target.href = canva.toDataURL('image/jpeg', 1.0);
     previewImg.src = base64;
 });
-
-
