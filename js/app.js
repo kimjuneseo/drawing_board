@@ -22,7 +22,9 @@ const commonListener = (event) => {
             pos.drawable = true;
             // 지우개인지 체크
             if (!pos.clearble) {
-                clear(event);
+                ctx.beginPath();
+                ctx.moveTo(event.x, event.y);
+                
             } else {
                 // 그릴준비
                 ctx.beginPath();
@@ -31,7 +33,8 @@ const commonListener = (event) => {
             break;
         case "mousemove":
             if (pos.drawable) {
-                !pos.clearble ? clear(event) : draw(event);
+            
+                !pos.clearble ? clear(event): draw(event);
             }
             break;
         case "mouseup":
@@ -50,8 +53,11 @@ const draw = (event) => {
 
 // clear
 const clear = (event) => {
-    const radius = 10;
-    ctx.clearRect(event.layerX - radius - 1, event.layerY - radius, radius * 2 + 2, radius * 2 + 2);
+    ctx.lineTo(event.layerX, event.layerY);
+    ctx.globalCompositeOperation="source-over";
+    ctx.stroke();
+    ctx.lineWidth = thicknes.value
+    ctx.strokeStyle = "#fff";
 }
 
 const previewFn = () => {
