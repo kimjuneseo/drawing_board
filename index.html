@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,11 +11,13 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="side_container">
-            <div class="Control">
-                <input id="color" type="color" value="#000">
-                <input id="thin" type="range" value="1" min="1" max="20">
+    <div class="side_container">
+        <div class="container">
+            <div class="Control flex">
+                <div class="line">
+                    <input id="color" type="color" value="#000">
+                    <input id="thin" type="range" value="1" min="1" max="20">
+                </div>
                 <div class="tool">
                     <input type="button" value="지우개" id="eraser">
                     <input type="button" value="펜" id="pen">

@@ -17,29 +17,36 @@ const pos = {
 
 // evt management
 const commonListener = (event) => {
-    switch (event.type) {
-        case "mousedown":
-            pos.drawable = true;
-            // 지우개인지 체크
-            if (!pos.clearble) {
-                ctx.beginPath();
-                ctx.moveTo(event.x, event.y);
-                
-            } else {
-                // 그릴준비
-                ctx.beginPath();
-                ctx.moveTo(event.x, event.y);
-            }
-            break;
-        case "mousemove":
-            if (pos.drawable) {
-            
-                !pos.clearble ? clear(event): draw(event);
-            }
-            break;
-        case "mouseup":
-            pos.drawable = false;
-            break;
+    
+    if ("mousedown" === event.type) {
+
+        pos.drawable = true;
+        // 지우개인지 체크
+        if (!pos.clearble) {
+            ctx.beginPath();
+            ctx.moveTo(event.layerX, event.layerY);
+            return;
+        } 
+
+        if(pos.clearble){
+            // 그릴준비
+            ctx.beginPath();
+            ctx.moveTo(event.layerX, event.layerY);
+            return;
+        }
+        
+    }
+    
+    if ("mousemove" === event.type) {
+        if (pos.drawable) {
+            !pos.clearble ? clear(event) : draw(event);
+        }
+
+    }
+
+    if ("mouseup" === event.type) {
+        pos.drawable = false;
+
     }
 };
 
@@ -54,9 +61,9 @@ const draw = (event) => {
 // clear
 const clear = (event) => {
     ctx.lineTo(event.layerX, event.layerY);
-    ctx.globalCompositeOperation="source-over";
+    ctx.globalCompositeOperation = "source-over";
     ctx.stroke();
-    ctx.lineWidth = thicknes.value
+    ctx.lineWidth = 30
     ctx.strokeStyle = "#fff";
 }
 
@@ -69,7 +76,7 @@ const toolListener = (boolean) => {
 };
 
 const ShapeDraw = (e) => {
-
+    console.log(e);
 }
 // input evt
 thicknes.addEventListener('click', commonListener);
@@ -87,7 +94,7 @@ closeBtn.addEventListener("click", previewFn)
 // tool evt
 pen.addEventListener('click', () => toolListener(true));
 eraser.addEventListener("click", () => toolListener(false));
-reat.addEventListener("click", () => ShapeDraw(e));
+reat.addEventListener("click", ShapeDraw);
 
 
 // 우클릭 저장

@@ -1,14 +1,19 @@
 *{margin: 0; padding: 0;}
 .none{display: none;}
-.container{position: relative;}
+.flex{display: flex;}
+
+.container{ width:1800px; margin: 0;}
 .active{background: #000; color: #fff;}
 
-#canva{ background: #fff; margin-top: 80px; margin-left: 80px;}
-.side_container{width: 100%; height: 100vh; overflow: hidden; position: absolute; background: rgba(128, 126, 126, 0.705);}
-.side_container .Control{position: absolute; }
-.side_container .reat{width: 50px; height: 50px; border: 1px solid #000;}
-.modal{z-index: 100; background: rgba(0, 0, 0, 0.123); width: 100%; height: 100%; position: absolute; top: 0;}
-.modal .previewImgModal{width: 500px; height: 400px; border: 1px solid rgb(172, 172, 172); border-radius: 6px; background: rgba(172, 172, 172, 0.726); position: absolute;  top: 25%; left: 35%;}
-.modal .previewImgModal img{width: 150px; height: 100px; position: absolute; left: 10%; top: 10%;}
-.modal .previewImgModal .closeBtn{position: absolute; right: 0;}
+#canva{ background: #fff; margin: 0 auto;}
+
+.side_container{width: 100%; height: 100vh; overflow: hidden;  background: rgba(128, 126, 126, 0.705);}
+.side_container .container{width: 1600px; margin: 0 auto;}
+.side_container .Control{ width: 600px; height: 100px; margin: 10px; background: rgba(102, 102, 102, 0.705);  align-items: center;}
+.side_container .Control .reat{width: 50px; height: 50px; border: 1px solid #000;}
+
+.modal{z-index: 100; background: rgba(0, 0, 0, 0.123); width: 100%; height: 100%;  top: 0;}
+.modal .previewImgModal{width: 500px; height: 400px; border: 1px solid rgb(172, 172, 172); border-radius: 6px; background: rgba(172, 172, 172, 0.726);   top: 25%; left: 35%;}
+.modal .previewImgModal img{width: 150px; height: 100px;  left: 10%; top: 10%;}
+.modal .previewImgModal .closeBtn{ right: 0;}
  
